@@ -80,25 +80,25 @@
 
 <input id="nameInput" placeholder="Imię">
 <input id="surnameInput" placeholder="Nazwisko">
-<button onclick="generateProfile()">Generuj Profil</button>
+<button id="generateBtn">Generuj Profil</button>
 
 <div id="profileDisplay"></div>
 
-<button id="adminBtn" onclick="toggleAdmin()">Admin</button>
+<button id="adminBtn">Admin</button>
 <div id="adminPanel"></div>
 
 <script>
   const history = [];
 
   const exampleData = {
-    fruit: ["Mango", "Banan", "Kokos", "Arbuz", "Gruszka", "Papaja", "Durian", "Ananas", "Jabłko", "Winogrono", "Truskawka", "Malina", "Jeżyna", "Brzoskwinia"],
-    sauce: ["Czosnkowy", "BBQ", "Musztarda miodowa", "Słodko-kwaśny", "Ostry ketchup", "Majonez", "Tysiąca wysp", "Sos chili", "Aioli", "Ranch"],
-    emoji: ["😎", "🦄", "🔥", "🎉", "🍟", "🛸", "🐙", "💥", "🌈", "🎈"],
-    song: ["Never Gonna Give You Up", "Macarena", "Gangnam Style", "Barbie Girl", "Numa Numa", "Dragostea Din Tei", "Crab Rave", "Banana Song"],
-    animal: ["Leniwiec", "Foka", "Żubr", "Jednorożec", "Kot w garniturze", "Pingwin ninja", "Miś panda", "Wiewiórka DJ", "Hipopotam baletnica", "Żaba detektyw"],
-    planet: ["Mars", "Neptun", "Saturn", "Ziemia 2.0", "GigaJowisz", "Pluton", "Krypton", "Pandora", "Andromeda-9", "Planeta Disco"],
-    motto: ["Idź tam, gdzie można zjeść", "Zawsze miej awaryjną kanapkę", "Życie to gra w Tetris", "Nie każda porażka to game over", "Codziennie jeden level wyżej"],
-    mcThing: ["McFlurry z piklami", "Sos z zaplecza", "Frytki o 3:00", "Złota frytka", "Zimne frytki, które i tak kochasz", "Magiczna torba z niespodzianką"]
+    fruit: ["Mango", "Banan", "Kokos", "Arbuz", "Gruszka", "Papaja", "Durian"],
+    sauce: ["Czosnkowy", "BBQ", "Musztarda miodowa", "Słodko-kwaśny", "Majonez"],
+    emoji: ["😎", "🔥", "🎉", "🍟", "🐸"],
+    song: ["Macarena", "Gangnam Style", "Polka dla pingwina", "Barbie Girl"],
+    animal: ["Leniwiec", "Foka", "Jednorożec", "Kot w garniturze"],
+    planet: ["Mars", "Neptun", "Saturn", "Ziemia 2.0"],
+    motto: ["Idź tam, gdzie można zjeść", "Życie to gra w Tetris"],
+    mcThing: ["Złota frytka", "Sos z zaplecza", "Frytki o 3:00"]
   };
 
   function randomFrom(arr) {
@@ -110,42 +110,21 @@
     const surname = document.getElementById('surnameInput').value.trim();
     if (!name || !surname) return;
 
-    const firstLetterName = name[0].toUpperCase();
-    const firstLetterSurname = surname[0].toUpperCase();
-
     const profileHTML = `
       <div class="profile">
         <strong>Imię i nazwisko:</strong> ${name} ${surname}<br>
-        <strong>Wiek:</strong> ${20 + (firstLetterName.charCodeAt(0) % 30)} lat<br>
-        <strong>Wzrost:</strong> ${150 + (firstLetterSurname.charCodeAt(0) % 50)} cm<br>
-        <strong>Zawód:</strong> ${firstLetterSurname}yczny ${firstLetterName}olog<br>
-        <strong>Miejsce zamieszkania:</strong> Miasto ${firstLetterSurname}${firstLetterName}-owo<br>
-        <strong>Lubi:</strong> Spacery z lodówką<br>
+        <strong>Wiek:</strong> ${20 + (name.charCodeAt(0) % 30)} lat<br>
+        <strong>Wzrost:</strong> ${150 + (surname.charCodeAt(0) % 50)} cm<br>
+        <strong>Zawód:</strong> ${surname[0].toUpperCase()}yczny ${name[0].toUpperCase()}olog<br>
+        <strong>Miejsce zamieszkania:</strong> Miasto ${surname[0]}${name[0]}owo<br>
         <strong>Ulubiony owoc:</strong> ${randomFrom(exampleData.fruit)}<br>
-        <strong>Styl tańca:</strong> Breakdance w piżamie<br>
         <strong>Ulubiony sos w McDonald's:</strong> ${randomFrom(exampleData.sauce)}<br>
         <strong>Najlepsza rzecz w McDonald's:</strong> ${randomFrom(exampleData.mcThing)}<br>
-        <strong>Tajna moc:</strong> Teleportacja przez Wi-Fi<br>
-        <strong>Poziom sarkazmu:</strong> ${Math.floor(Math.random() * 11)} / 10<br>
         <strong>Zwierzę totemiczne:</strong> ${randomFrom(exampleData.animal)}<br>
-        <strong>Liczba skarpet noszonych naraz:</strong> ${Math.floor(Math.random() * 5) + 1}<br>
         <strong>Ulubiony emoji:</strong> ${randomFrom(exampleData.emoji)}<br>
-        <strong>Miejsce snu:</strong> Pod stołem w IKEA<br>
         <strong>Ulubiona planeta:</strong> ${randomFrom(exampleData.planet)}<br>
-        <strong>Ulubiony zapach:</strong> Laptop po rozgrzaniu<br>
-        <strong>Ulubione ciastko:</strong> Oreo z dżemem<br>
-        <strong>Poziom chaosu w pokoju:</strong> ${Math.floor(Math.random() * 100)}%<br>
-        <strong>Rytuał poranny:</strong> Taniec z mopa<br>
-        <strong>Ulubiona piosenka do karaoke:</strong> ${randomFrom(exampleData.song)}<br>
-        <strong>Ulubiony sport:</strong> Szachy na trampolinie<br>
-        <strong>Motto życiowe:</strong> "${randomFrom(exampleData.motto)}"<br>
-        <strong>Największa fobia:</strong> Kubek bez uchwytu<br>
-        <strong>Kolor dziwnych rzeczy:</strong> Ultrafioletowy łososiowy<br>
-        <strong>Liczba prób wejścia do lodówki:</strong> ${Math.floor(Math.random() * 15)}<br>
-        <strong>Napój z dzieciństwa:</strong> Kompot z glonów<br>
-        <strong>Wymarzony pojazd:</strong> Skuter z turbo-czajnikiem<br>
-        <strong>Typ ubrania na randkę:</strong> Garnitur z poduszką<br>
-        <strong>Ulubiony przedmiot szkolny:</strong> Przerwa
+        <strong>Ulubiona piosenka:</strong> ${randomFrom(exampleData.song)}<br>
+        <strong>Motto życiowe:</strong> "${randomFrom(exampleData.motto)}"
       </div>
     `;
 
@@ -156,3 +135,17 @@
   function toggleAdmin() {
     const password = prompt("Podaj kod admina:");
     if (password === "3301") {
+      document.getElementById('adminPanel').style.display = "block";
+      document.getElementById('adminPanel').innerHTML =
+        "<strong>Historia imion:</strong><br>" + history.join("<br>");
+    } else {
+      alert("Niepoprawny kod!");
+    }
+  }
+
+  document.getElementById("generateBtn").addEventListener("click", generateProfile);
+  document.getElementById("adminBtn").addEventListener("click", toggleAdmin);
+</script>
+
+</body>
+</html>
