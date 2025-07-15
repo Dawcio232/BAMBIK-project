@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Generator Fikcyjnego Profilu</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #a3d5ff, #f4e2d8);
+      padding: 40px;
+      margin: 0;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #2b2b2b;
+      text-shadow: 1px 1px 2px #ccc;
+    }
+    input {
+      padding: 10px;
+      margin: 5px;
+      border: 2px solid #999;
+      border-radius: 6px;
+      width: 220px;
+      font-size: 1em;
+    }
+    button {
+      padding: 10px 15px;
+      margin: 5px;
+      border: none;
+      background-color: #333;
+      color: #fff;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #555;
+    }
+    .profile {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 4px 4px 10px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin: 20px auto;
+      border-left: 6px solid #0078d7;
+    }
+    #adminPanel {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      display: none;
+      background: #fff;
+      border: 1px solid #333;
+      padding: 10px;
+      max-height: 300px;
+      overflow-y: auto;
+      width: 250px;
+      box-shadow: 2px 2px 8px #444;
+      border-radius: 8px;
+    }
+    #adminBtn {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      background: #0078d7;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 0.9em;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🎲 Generator Fikcyjnego Profilu</h1>
+
+<input id="nameInput" placeholder="Imię">
+<input id="surnameInput" placeholder="Nazwisko">
+<button onclick="generateProfile()">Generuj Profil</button>
+
+<div id="profileDisplay"></div>
+
+<button id="adminBtn" onclick="toggleAdmin()">Admin</button>
+<div id="adminPanel"></div>
+
+<script>
+  const history = [];
+
+  const exampleData = {
+    fruit: ["Mango", "Banan", "Kokos", "Arbuz", "Gruszka", "Papaja", "Durian"],
+    sauce: ["Czosnkowy", "BBQ", "Musztarda miodowa", "Słodko-kwaśny", "Ostry ketchup"],
+    emoji: ["😎", "🦄", "🔥", "🎉", "🍟", "🛸", "🐙"],
+    song: ["Never Gonna Give You Up", "Macarena", "Gangnam Style", "Polka dla pingwina"],
+    animal: ["Leniwiec", "Foka", "Żubr", "Jednorożec", "Kot w garniturze"],
+    planet: ["Mars", "Neptun", "Saturn", "Ziemia 2.0", "GigaJowisz"],
+    motto: ["Idź tam, gdzie można zjeść", "Zawsze miej awaryjną kanapkę", "Życie to gra w Tetris"],
+    favoriteThingInMcd: ["McFlurry z piklami", "Sos z zaplecza", "Frytki o 3:00", "Lód w kubku po coli"],
+  };
+
+  function randomFrom(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  function generateProfile() {
+    const name = document.getElementById('nameInput').value.trim();
+    const surname = document.getElementById('surnameInput').value.trim();
+    if (!name || !surname) return;
+
+    const firstLetterName = name[0].toUpperCase();
+    const firstLetterSurname = surname[0].toUpperCase();
+
+    const profileHTML = `
+      <div class="profile">
+        <strong>Imię i nazwisko:</strong> ${name} ${surname}<br>
+        <strong>Wiek:</strong> ${20 + (firstLetterName.charCodeAt(0) % 30)} lat<br>
+        <strong>Wzrost:</strong> ${150 + (firstLetterSurname.charCodeAt(0) % 50)} cm<br>
+        <strong>Zawód:</strong> ${firstLetterSurname}yczny ${firstLetterName}olog<br>
+        <strong>Miejsce zamieszkania:</strong> Miasto ${firstLetterSurname}${firstLetterName}owo<br>
+        <strong>Lubi:</strong> ${firstLetterName === 'P' ? "Paprykę na pizzy" : "Spacery z lodówką"}<br>
+        <strong>Ulubiony owoc:</strong> ${randomFrom(exampleData.fruit)}<br>
+        <strong>Styl tańca:</strong> Breakdance w piżamie<br>
+        <strong>Ulubiony sos w McDonald's:</strong> ${randomFrom(exampleData.sauce)}<br>
+        <strong>Tajna moc:</strong> Teleportacja przez Wi-Fi<br>
+        <strong>Poziom sarkazmu:</strong> ${Math.floor(Math.random() * 11)} / 10<br>
+        <strong>Zwierzę totemiczne:</strong> ${randomFrom(exampleData.animal)}<br>
+        <strong>Liczba skarpet noszonych naraz:</strong> ${Math.floor(Math.random() * 5) + 1}<br>
+        <strong>Ulubiony emoji:</strong> ${randomFrom(exampleData.emoji)}<br>
+        <strong>Miejsce snu:</strong> Pod stołem w IKEA<br>
+        <strong>Ulubiona planeta:</strong> ${randomFrom(exampleData.planet)}<br>
+        <strong>Ulubiony zapach:</strong> Laptop po rozgrzaniu<br>
+        <strong>Ulubione ciastko:</strong> Oreo z dżemem<br>
+        <strong>Poziom chaosu w pokoju:</strong> ${Math.floor(Math.random() * 100)}%<br>
+        <strong>Rytuał poranny:</strong> Taniec z mopa<br>
+        <strong>Ulubiona piosenka do karaoke:</strong> ${randomFrom(exampleData.song)}<br>
+        <strong>Ulubiony sport:</strong> Szachy na trampolinie<br>
+        <strong>Motto życiowe:</strong> "${randomFrom(exampleData.motto)}"<br>
+        <strong>Największa fobia:</strong> Kubek bez uchwytu<br>
+        <strong>Kolor dziwnych rzeczy:</strong> Ultrafioletowy łososiowy<br>
+        <strong>Liczba prób wejścia do lodówki:</strong> ${Math.floor(Math.random() * 15)}<br>
+        <strong>Napój z dzieciństwa:</strong> Kompot z glonów<br>
+        <strong>Wymarzony pojazd:</strong> Skuter z turbo-czajnikiem<br>
+        <strong>Typ ubrania na randkę:</strong> Garnitur z poduszką<br>
+        <strong>Ulubiony przedmiot szkolny:</strong> Przerwa
+      </div>
+    `;
+
+    document.getElementById('profileDisplay').innerHTML = profileHTML;
+    history.push(`${name} ${surname}`);
+  }
+
+  function toggleAdmin() {
+    const password = prompt("Podaj kod admina:");
+    if (password === "3301") {
+      document.getElementById('adminPanel').style.display = "block";
+      document.getElementById('adminPanel').innerHTML =
+        "<strong>Historia imion:</strong><br>" + history.join("<br>");
+    } else {
+      alert("Niepoprawny kod!");
+    }
+  }
+</script>
+
+</body>
+</html>
