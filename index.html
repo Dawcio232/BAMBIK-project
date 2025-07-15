@@ -76,7 +76,7 @@
 </head>
 <body>
 
-<h1>🎲 Generator Fikcyjnego Profilu</h1>
+<h1>✨ Generator Fikcyjnego Profilu</h1>
 
 <input id="nameInput" placeholder="Imię">
 <input id="surnameInput" placeholder="Nazwisko">
@@ -91,79 +91,14 @@
   const history = [];
 
   const exampleData = {
-    fruit: ["Mango", "Banan", "Kokos", "Arbuz", "Gruszka", "Papaja", "Durian", "Ananas", "Jabłko", "Winogrono", "Truskawka", "Malina", "Jeżyna", "Brzoskwinia", "Nektarynka", "Śliwka", "Pomarańcza", "Mandarynka", "Cytryna", "Limonka", "Awokado", "Kiwi", "Granat", "Figa", "Morela", "Liczi", "Jagoda", "Czereśnia", "Grejpfrut", "Persymona"]
-    sauce: ["Czosnkowy", "BBQ", "Musztarda miodowa", "Słodko-kwaśny", "Ostry ketchup", "Majonez", "Tysiąca wysp", "Sos chili", "Aioli", "Ranch", "Curry", "Pomidorowy", "Serowy", "Tzatziki", "Sos pieprzowy", "Mango chutney", "Wasabi mayo", "Sos śliwkowy", "Sos jogurtowy", "Sos hoisin"]
-    const danceStyles = [
-  "<strong>Styl tańca:</strong> Breakdance w piżamie<br>",
-  "<strong>Styl tańca:</strong> Salsa na linie<br>",
-  "<strong>Styl tańca:</strong> Taniec flaminga na rolkach<br>",
-  "<strong>Styl tańca:</strong> Hip-hop z kapeluszem<br>",
-  "<strong>Styl tańca:</strong> Balet na jednej nodze<br>",
-  "<strong>Styl tańca:</strong> Taniec robotów w deszczu<br>",
-  "<strong>Styl tańca:</strong> Disco w kapciach<br>",
-  "<strong>Styl tańca:</strong> Taniec lwa na imprezie<br>",
-  "<strong>Styl tańca:</strong> Flamenco z parasolką<br>",
-  "<strong>Styl tańca:</strong> Jazz w skarpetkach<br>",
-  "<strong>Styl tańca:</strong> Taniec wróbla o świcie<br>",
-  "<strong>Styl tańca:</strong> Kankana na biurku<br>",
-  "<strong>Styl tańca:</strong> Tango z cieniem<br>",
-  "<strong>Styl tańca:</strong> Moonwalk po schodach<br>",
-  "<strong>Styl tańca:</strong> Breakdance na lodzie<br>",
-  "<strong>Styl tańca:</strong> Taniec polki na plaży<br>",
-  "<strong>Styl tańca:</strong> Shuffle w śniegu<br>",
-  "<strong>Styl tańca:</strong> Waacking pod prysznicem<br>",
-  "<strong>Styl tańca:</strong> Taniec afrykański na trawie<br>",
-  "<strong>Styl tańca:</strong> Street dance w kapeluszu<br>",
-  "<strong>Styl tańca:</strong> Locking w kuchni<br>",
-  "<strong>Styl tańca:</strong> Taniec syreny w wannie<br>",
-  "<strong>Styl tańca:</strong> Balet na łące<br>",
-  "<strong>Styl tańca:</strong> Taniec żabki w kałuży<br>",
-  "<strong>Styl tańca:</strong> Disco fever w windzie<br>",
-  "<strong>Styl tańca:</strong> Taniec lasu o zmierzchu<br>",
-  "<strong>Styl tańca:</strong> Taniec pirata na statku<br>",
-  "<strong>Styl tańca:</strong> Taniec motyla o poranku<br>",
-  "<strong>Styl tańca:</strong> Taniec na hulajnodze<br>",
-  "<strong>Styl tańca:</strong> Taniec flaminga w deszczu<br>"
-];
-
-  emoji: ["😎", "🦄", "🔥", "🎉", "🍟", "🛸", "🐙", "🐰", "🍕", "🚀", "🎮", "💎", "🥑", "🐢", "⚡", "🌈", "🤖", "👾", "🍉", "🧁", "🥕", "🐸", "🦕", "🪐", "🧃", "🎯", "🌟", "🥳", "🧸", "🍩"]
-    song: ["Never Gonna Give You Up", "Macarena", "Gangnam Style", "Polka dla pingwina", "Barbie Girl", "Sandstorm", "Blue (Da Ba Dee)", "Baby Shark", "Numa Numa", "Dragostea Din Tei", "Axel F (Crazy Frog)", "What Does The Fox Say", "Coffin Dance", "Party Rock Anthem", "Crab Rave", "Bananowy Song", "I'm Too Sexy", "Cotton Eye Joe", "Cha Cha Slide", "U Can't Touch This", "YMCA", "Despacito", "Call Me Maybe", "Friday", "Waka Waka", "I Like to Move It", "Happy", "Banana (Minions Song)", "We No Speak Americano", "Hakuna Matata"]
-    animal: ["Leniwiec", "Foka", "Żubr", "Jednorożec", "Kot w garniturze", "Krab DJ", "Tańcząca lama", "Wściekła kura", "Pingwin ninja", "Miś panda", "Pies astronauta", "Kaczka w kapeluszu", "Owca superbohater", "Koń na deskorolce", "Kameleon artysta", "Jeż z kawą", "Wiewiórka DJ", "Nietoperz w okularach", "Hipopotam baletnica", "Słoń z parasolką", "Rekin surfer", "Żaba detektyw", "Papużka gamer", "Wilk w swetrze", "Mors z gitarą", "Zebra z okularkami", "Królik ninja", "Koala programista", "Gepard kurier", "Ośmiornica kucharz"]
-    planet: ["Mars", "Neptun", "Saturn", "Ziemia 2.0", "GigaJowisz", "Merkury", "Wenus", "Ziemia", "Jowisz", "Uran", "Pluton", "Kepler-22b", "Proxima b", "Gliese 581g", "Tatooine", "Krypton", "Pandora", "Nibiru", "Andromeda-9", "CyberZiemia", "MegaSaturn", "Lodowy Glob", "Czekoladowa Planeta", "Planeta Disco", "Pixelia", "Planeta X", "Solarion", "Voltar", "Nebulon", "Planeta Kaktusów"]
-    motto: ["Idź tam, gdzie można zjeść", "Zawsze miej awaryjną kanapkę", "Życie to gra w Tetris", "Jeśli nie wiesz – śpij", "Kto rano wstaje, ten potrzebuje kawy", "Nie każda porażka to game over", "Zawsze noś skarpetki do pary (albo nie)", "Minimalizm to więcej miejsca na pizzę", "Nie bądź jak Wi-Fi bez hasła", "Codziennie jeden level wyżej"]
-    favoriteThingInMcd: [
-  "McFlurry z piklami",
-  "Sos z zaplecza",
-  "Frytki o 3:00",
-  "Lód w kubku po coli",
-  "McZestaw bez słomki",
-  "Zimna połowa cheeseburgera",
-  "Tajemniczy sos z dna torby",
-  "Ketchup z końcówki dyspensera",
-  "Nadgryziony nugget (ale przez przyjaciela)",
-  "Złota frytka – ta idealnie chrupiąca",
-  "Lód z maszyny, która jednak działa",
-  "Plastikowa zabawka bez nóg",
-  "Papierowe słomki, które się rozpuszczają",
-  "Cisza w McDrive po północy",
-  "McWrap zawinięty jak prezent świąteczny",
-  "Zbyt duży napój za 1 zł",
-  "Zapach McDonalda unoszący się kilometr przed lokalem",
-  "Słomka do McFlurry, która nigdy nie była łyżką",
-  "Magiczna torba z niespodzianką – czy będzie serwetka?",
-  "McDonald’s w niedzielę wieczorem – świętość",
-  "Zgubiona frytka na dnie torebki",
-  "Nugget w kształcie Polski",
-  "McFlurry którego nie zamówiłeś, ale i tak zjadłeś",
-  "Kawa, która budzi sumienie",
-  "Burger, który wygląda jak zdjęcie (raz w życiu)",
-  "Kasjer z supermocą: znajdzie kupon na wszystko",
-  "Zimne frytki, które i tak kochasz",
-  "Zestaw śniadaniowy o 10:31 (legenda)",
-  "Czarna dziura w menu – McRib",
-  "Ulotka z rabatem sprzed 5 lat, która działa"
-]
-
+    fruit: ["Mango", "Banan", "Kokos", "Arbuz", "Gruszka", "Papaja", "Durian", "Ananas", "Jabłko", "Winogrono", "Truskawka", "Malina", "Jeżyna", "Brzoskwinia"],
+    sauce: ["Czosnkowy", "BBQ", "Musztarda miodowa", "Słodko-kwaśny", "Ostry ketchup", "Majonez", "Tysiąca wysp", "Sos chili", "Aioli", "Ranch"],
+    emoji: ["😎", "🦄", "🔥", "🎉", "🍟", "🛸", "🐙", "💥", "🌈", "🎈"],
+    song: ["Never Gonna Give You Up", "Macarena", "Gangnam Style", "Barbie Girl", "Numa Numa", "Dragostea Din Tei", "Crab Rave", "Banana Song"],
+    animal: ["Leniwiec", "Foka", "Żubr", "Jednorożec", "Kot w garniturze", "Pingwin ninja", "Miś panda", "Wiewiórka DJ", "Hipopotam baletnica", "Żaba detektyw"],
+    planet: ["Mars", "Neptun", "Saturn", "Ziemia 2.0", "GigaJowisz", "Pluton", "Krypton", "Pandora", "Andromeda-9", "Planeta Disco"],
+    motto: ["Idź tam, gdzie można zjeść", "Zawsze miej awaryjną kanapkę", "Życie to gra w Tetris", "Nie każda porażka to game over", "Codziennie jeden level wyżej"],
+    mcThing: ["McFlurry z piklami", "Sos z zaplecza", "Frytki o 3:00", "Złota frytka", "Zimne frytki, które i tak kochasz", "Magiczna torba z niespodzianką"]
   };
 
   function randomFrom(arr) {
@@ -184,44 +119,12 @@
         <strong>Wiek:</strong> ${20 + (firstLetterName.charCodeAt(0) % 30)} lat<br>
         <strong>Wzrost:</strong> ${150 + (firstLetterSurname.charCodeAt(0) % 50)} cm<br>
         <strong>Zawód:</strong> ${firstLetterSurname}yczny ${firstLetterName}olog<br>
-        <strong>Miejsce zamieszkania:</strong> Miasto ${firstLetterSurname}${firstLetterName}-miasto<br>
-        <strong>Lubi:</strong> ${
-  firstLetterName === 'A' ? "Ananasa na pizzy" :
-  firstLetterName === 'B' ? "Bieganie z parasolem" :
-  firstLetterName === 'C' ? "Ciche koncerty disco" :
-  firstLetterName === 'D' ? "Drapać się po głowie bez powodu" :
-  firstLetterName === 'E' ? "Ekspresowe drzemki" :
-  firstLetterName === 'F' ? "Frytki z czekoladą" :
-  firstLetterName === 'G' ? "Gotować wodę na zimno" :
-  firstLetterName === 'H' ? "Hakować tostery" :
-  firstLetterName === 'I' ? "Irytować gołębie spojrzeniem" :
-  firstLetterName === 'J' ? "Jeść pizzę bez rąk" :
-  firstLetterName === 'K' ? "Kopać powietrze" :
-  firstLetterName === 'L' ? "Lizać lód przez szybę" :
-  firstLetterName === 'M' ? "Mieszać herbatę widelcem" :
-  firstLetterName === 'N' ? "Nurkować w wannie" :
-  firstLetterName === 'O' ? "Obserwować ser topniejący na toście" :
-  firstLetterName === 'P' ? "Paprykę na pizzy" :
-  firstLetterName === 'Q' ? "Quesadillę z dżemem" :
-  firstLetterName === 'R' ? "Rysować kredą po monitorze" :
-  firstLetterName === 'S' ? "Spacery z lodówką" :
-  firstLetterName === 'T' ? "Tańczyć jak pingwin" :
-  firstLetterName === 'U' ? "Układać frytki w kolejność alfabetyczną" :
-  firstLetterName === 'V' ? "Veganizować kebaby myślą" :
-  firstLetterName === 'W' ? "Wchodzić tyłem do windy" :
-  firstLetterName === 'X' ? "Xerować ogórki" :
-  firstLetterName === 'Y' ? "Yyy... mówić często 'yyy'" :
-  firstLetterName === 'Z' ? "Zakręcać butelki na czas" :
-  firstLetterName === 'Ł' ? "Łowić dźwięki radiem FM" :
-  firstLetterName === 'Ć' ? "Ćwiczyć śmiech w lustrze" :
-  firstLetterName === 'Ś' ? "Ściskać miękkie poduszki zawodowo" :
-  firstLetterName === 'Ź' ? "Źle interpretować znaki drogowe" :
-  "Zjadać arbuzy w skarpetkach"
-}<br>
-
+        <strong>Miejsce zamieszkania:</strong> Miasto ${firstLetterSurname}${firstLetterName}-owo<br>
+        <strong>Lubi:</strong> Spacery z lodówką<br>
         <strong>Ulubiony owoc:</strong> ${randomFrom(exampleData.fruit)}<br>
-        <strong>Styl tańca:</strong> ${randomFrom(exampleData.danceStyles)}<br>
+        <strong>Styl tańca:</strong> Breakdance w piżamie<br>
         <strong>Ulubiony sos w McDonald's:</strong> ${randomFrom(exampleData.sauce)}<br>
+        <strong>Najlepsza rzecz w McDonald's:</strong> ${randomFrom(exampleData.mcThing)}<br>
         <strong>Tajna moc:</strong> Teleportacja przez Wi-Fi<br>
         <strong>Poziom sarkazmu:</strong> ${Math.floor(Math.random() * 11)} / 10<br>
         <strong>Zwierzę totemiczne:</strong> ${randomFrom(exampleData.animal)}<br>
@@ -253,14 +156,3 @@
   function toggleAdmin() {
     const password = prompt("Podaj kod admina:");
     if (password === "3301") {
-      document.getElementById('adminPanel').style.display = "block";
-      document.getElementById('adminPanel').innerHTML =
-        "<strong>Historia imion:</strong><br>" + history.join("<br>");
-    } else {
-      alert("Niepoprawny kod!");
-    }
-  }
-</script>
-
-</body>
-</html>
